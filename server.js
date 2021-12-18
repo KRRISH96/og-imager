@@ -56,7 +56,7 @@ const templateHtml = `
 
 
 app.get('/puppy', async (req, res) => {
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox','--disable-setuid-sandbox'] });
     const page = await browser.newPage();
     await page.setViewport({ width: 1200, height: 630 });
 
