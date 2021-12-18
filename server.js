@@ -6,7 +6,12 @@ const Handlebars = require("handlebars");
 const renderSocialImage = require("puppeteer-social-image");
 const app = express();
 const port = process.env.PORT || 7777;
- 
+
+app.get('/', async (req, res) => {
+  res.send("Ok, This is deployed!");
+})
+
+
 app.get('/ogimage', async (req, res) => {
   const ogimage = await renderSocialImage.default({
     templateBody: '<div class="Main">Hello, {{name}}!</div>',
@@ -18,7 +23,7 @@ app.get('/ogimage', async (req, res) => {
     size: "1200x630"
   });
   res.writeHead(200, { 'Content-Type': 'image/png' });
-  res.end(ogimage, 'binary');
+  res.send(ogimage, 'binary');
   // res.send(ogimage);
 })
 
@@ -71,7 +76,7 @@ app.get('/puppy', async (req, res) => {
     await browser.close();
 
     res.writeHead(200, { 'Content-Type': 'image/png', 'Cache-Control': `public, immutable, no-transform, s-max-age=2592000, max-age=2592000` });
-    res.end(image, 'binary');
+    res.send(image, 'binary');
 })
 
 
