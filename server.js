@@ -7,8 +7,14 @@ const renderSocialImage = require("puppeteer-social-image");
 const app = express();
 const port = process.env.PORT || 7777;
 
-app.get('/', async (req, res) => {
-  res.send("Ok, This is deployed!");
+app.use(express.static(__dirname));
+
+
+app.get('/', (req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/html' });
+  res.sendFile('index.html', {
+    root: path.join(__dirname, './')
+  })
 })
 
 
@@ -40,7 +46,7 @@ img {
 }
 .Main {
   height: 100%;
-  color: green;
+  color: blue;
 }
 `;
 
@@ -82,4 +88,4 @@ app.get('/puppy', async (req, res) => {
 
 app.listen(port, () => {
   console.log(`app listening at ${port}`)
-})
+});
