@@ -46,7 +46,8 @@ img {
 }
 .Main {
   height: 100%;
-  color: blue;
+  color: red;
+  font-size: 30px;
 }
 `;
 
@@ -64,7 +65,7 @@ const templateHtml = `
 app.get('/puppy', async (req, res) => {
     const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox','--disable-setuid-sandbox'] });
     const page = await browser.newPage();
-    await page.setViewport({ width: 1200, height: 630 });
+    await page.setViewport({ width: 1200, height: 630, deviceScaleFactor: 1 });
 
     const compiledStyles = Handlebars.compile(templateStyles)({ bg: req.query.bgUrl });
     const compiledHtml = Handlebars.compile(templateHtml)({
