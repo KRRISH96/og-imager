@@ -23,7 +23,7 @@ app.get('/ogimage', async (req, res) => {
     size: "1200x630"
   });
   res.writeHead(200, { 'Content-Type': 'image/png' });
-  res.send(ogimage);
+  res.end(ogimage);
   // res.send(ogimage);
 })
 
@@ -76,7 +76,7 @@ app.get('/puppy', async (req, res) => {
     await browser.close();
 
     res.writeHead(200, { 'Content-Type': 'image/png', 'Cache-Control': `public, immutable, no-transform, s-max-age=2592000, max-age=2592000` });
-    res.send(image);
+    res.end(image);
 })
 
 
