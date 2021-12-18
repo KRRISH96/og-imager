@@ -6,7 +6,8 @@
     "puppeteer-social-image": "^0.8.1"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
