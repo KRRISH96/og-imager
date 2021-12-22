@@ -16,16 +16,21 @@ app.get('/', (req, res) => {
 
 
 app.get('/ogimage', async (req, res) => {
-  const compiledHTML = getCompiledHTML(req.query);
-
-  const image = await generateImage({
-    width: req.query.width,
-    height: req.query.height,
-    content: compiledHTML
-  });
-    
-  res.writeHead(200, { 'Content-Type': 'image/png', 'Cache-Control': `public, immutable, no-transform, s-max-age=2592000, max-age=2592000` });
-  res.end(image);
+  try {
+    const compiledHTML = getCompiledHTML(req.query);
+  
+    const image = await generateImage({
+      width: req.query.width,
+      height: req.query.height,
+      content: compiledHTML
+    });
+      
+    res.writeHead(200, { 'Content-Type': 'image/png', 'Cache-Control': `public, immutable, no-transform, s-max-age=2592000, max-age=2592000` });
+    res.end(image);
+  } catch(e) {
+    console.log(e);
+    res.status(500).send('Internal Server Error!')
+  }
 });
 
 
