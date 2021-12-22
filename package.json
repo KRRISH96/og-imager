@@ -1,13 +1,36 @@
 {
+  "name": "og-imager",
+  "version": "1.0.0",
+  "description": "An Open Graph (OG) Image generator with NodeJS",
+  "author": "Sai Krishna Prasad K<KRRISH96>",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KRRISH96/og-imager.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "og-image",
+    "open graph",
+    "open graph protocol",
+    "handlebars",
+    "puppeteer"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KRRISH96/og-imager/issues"
+  },
+  "homepage": "https://github.com/KRRISH96/og-imager#readme",
   "dependencies": {
     "express": "^4.17.1",
     "handlebars": "^4.7.7",
     "puppeteer": "^2.1.1",
     "puppeteer-social-image": "^0.8.1"
-  },
-  "scripts": {
-    "dev": "nodemon server.js",
-    "start": "node server.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

@@ -46,7 +46,7 @@ const templateStyles = `
 
 body {
   padding: 2.5rem;
-  height: calc(100vh - 6rem);
+  height: 90vh;
   background: #fbfbfb;
   {{#if bgUrl}}
   background-image: url({{bgUrl}});

@@ -15,12 +15,12 @@ async function generateImage({ width, height, content }) {
     });
     const page = await browser.newPage();
 
-    if (width || height) {
-      await page.setViewport({
-        width: width ? Number(width) : DEFAULT_WIDTH,
-        height: height ? Number(height) : DEFAULT_HEIGHT
-      });
-    }
+    // if (width || height) {
+    //   await page.setViewport({
+    //     width: width ? Number(width) : DEFAULT_WIDTH,
+    //     height: height ? Number(height) : DEFAULT_HEIGHT
+    //   });
+    // }
 
     await page.setContent(content, { waitUntil: 'networkidle0' });
     const element = await page.$('#body');
