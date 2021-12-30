@@ -22,6 +22,7 @@ async function generateImage({ width, height, content }) {
     //   });
     // }
 
+    // Ref: https://github.blog/2021-06-22-framework-building-open-graph-images/#some-performance-gotchas
     // Set the content to our rendered HTML
     await page.setContent(content, { waitUntil: "domcontentloaded" });
     // Wait until all images and fonts have loaded
