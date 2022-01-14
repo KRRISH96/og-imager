@@ -8,22 +8,26 @@ const templateHTML = `
   </head>
   <body id="body">
     <main>
-      {{#if logoUrl}}
-        <div class='logo'><img src="{{logoUrl}}" /></div>
-      {{/if}}
+      <div class='logo'>
+        {{#if logoUrl}}
+          <img src="{{logoUrl}}" alt="logo" />
+        {{else}}
+          <span>Example Logo</span>
+        {{/if}}
+      </div>
       <div class="title">{{title}}</div>
-        <div>
-          {{#if tags}}
-            <ul class="tags">
-            {{#each tags}}
-              <li class="tag-item">#{{this}}</li>
-            {{/each}}
-            </ul>
-          {{/if}}
-          {{#if path}}
-            <p class="path">{{path}}</p>
-          {{/if}}
-        </div>
+      <div>
+        {{#if tags}}
+          <ul class="tags">
+          {{#each tags}}
+            <li class="tag-item">#{{this}}</li>
+          {{/each}}
+          </ul>
+        {{/if}}
+        {{#if path}}
+          <p class="path">{{path}}</p>
+        {{/if}}
+      </div>
     </main>
   </body>
 </html>
@@ -47,15 +51,15 @@ const templateStyles = `
 body {
   padding: 2.5rem;
   height: 90vh;
-  background: #fbfbfb;
+  background: #042f7d;
   {{#if bgUrl}}
   background-image: url({{bgUrl}});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   {{else}}
-  background: linear-gradient(to right, #f9f9f9, #a688cf);
-  color: #6b33a7;
+  background: linear-gradient(to right, #042f7d, #007eff);
+  color: #00ffae;
   {{/if}}
 }
 
@@ -70,6 +74,13 @@ main {
 .logo {
   width: 15rem;
   height: 3rem;
+}
+.logo span {
+  font-size: 2rem;
+  color: yellow;
+  font-style: italic;
+  text-decoration: wavy;
+  font-variant: unicase;
 }
 .logo img {
   width: 100%;
@@ -96,7 +107,7 @@ main {
 }
 
 .path {
-  color: #442991;
+  color: #6dd6ff;
   font-size: 1.25rem;
 }
 `;
