@@ -27,6 +27,9 @@
   },
   "homepage": "https://github.com/KRRISH96/og-imager#readme",
   "dependencies": {
+    "axios": "^0.27.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
     "express": "^4.17.1",
     "handlebars": "^4.7.7",
     "puppeteer": "^2.1.1",

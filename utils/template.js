@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 const templateHTML = `
 <!DOCTYPE html>
 <html lang="en">
@@ -8,25 +10,9 @@ const templateHTML = `
   </head>
   <body id="body">
     <main>
-      <div class='logo'>
-        {{#if logoUrl}}
-          <img src="{{logoUrl}}" alt="logo" />
-        {{else}}
-          <span>Example Logo</span>
-        {{/if}}
-      </div>
-      <div class="title">{{title}}</div>
-      <div>
-        {{#if tags}}
-          <ul class="tags">
-          {{#each tags}}
-            <li class="tag-item">#{{this}}</li>
-          {{/each}}
-          </ul>
-        {{/if}}
-        {{#if path}}
-          <p class="path">{{path}}</p>
-        {{/if}}
+      <div class='horizontal'>
+        <div class="title">{{title}}</div>
+        <div class="ticket-number"><h1 class="ticket-number-h1">{{ticketNumber}}</h1></div>
       </div>
     </main>
   </body>
@@ -49,18 +35,13 @@ const templateStyles = `
 }
 
 body {
-  padding: 2.5rem;
   height: 90vh;
-  background: #042f7d;
-  {{#if bgUrl}}
-  background-image: url({{bgUrl}});
+  background-image: url(data:image/png;base64,${fs
+    .readFileSync(`./assets/Ticket_v5.png`)
+    .toString("base64")});
   background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  {{else}}
-  background: linear-gradient(to right, #042f7d, #007eff);
-  color: #00ffae;
-  {{/if}}
+  background-size: 100% 100%;
+
 }
 
 main {
@@ -68,47 +49,46 @@ main {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+
 }
 
-.logo {
-  width: 15rem;
-  height: 3rem;
-}
-.logo span {
-  font-size: 2rem;
-  color: yellow;
-  font-style: italic;
-  text-decoration: wavy;
-  font-variant: unicase;
-}
-.logo img {
+.horizontal {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: raw;
+  margin-left: 120px;
 }
 
 .title {
+  display: flex;
   font-size: {{fontSize}};
   text-transform: capitalize;
-  margin: 0.25rem 0;
+  margin-top: 260px;
+  padding-left: 18px;
+  width: 760px;
+  height: 160px;
+  color: white;
   font-weight: bold;
+  align-items: center;
 }
 
-.tags {
+.ticket-number {
+  max-width: 160px;
+  color: white;
   display: flex;
-  list-style-type: none;
-  padding-left: 0;
-  color: #ff00d2;
-  font-size: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  margin-left: 36px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
-.tag-item {
-  margin-right: 0.5rem;
-}
-
-.path {
-  color: #6dd6ff;
-  font-size: 1.25rem;
+.ticket-number-h1 {
+  text-align: center; 
+  min-width: 80vh;
+  font-size: 72px;
+  transform: rotate(-0.25turn);
 }
 `;
 
