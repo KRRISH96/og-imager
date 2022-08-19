@@ -11,7 +11,7 @@ async function generateImage({ width, height, content }) {
       defaultViewport: {
         width: DEFAULT_WIDTH,
         height: DEFAULT_HEIGHT,
-      }
+      },
     });
     const page = await browser.newPage();
 
@@ -30,7 +30,7 @@ async function generateImage({ width, height, content }) {
       const selectors = Array.from(document.querySelectorAll("img"));
       await Promise.all([
         document.fonts.ready,
-      ...selectors.map((img) => {
+        ...selectors.map((img) => {
           // Image has already finished loading, let’s see if it worked
           if (img.complete) {
             // Image loaded and has presence
@@ -47,15 +47,15 @@ async function generateImage({ width, height, content }) {
       ]);
     });
 
-    const element = await page.$('#body');
+    const element = await page.$("#body");
     const image = await element.screenshot({ omitBackground: true });
     await browser.close();
 
     return image;
-  } catch(e) {
+  } catch (e) {
     console.log(e);
     return null;
   }
-};
+}
 
 module.exports = generateImage;
